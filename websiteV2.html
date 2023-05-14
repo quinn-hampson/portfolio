@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="UTF-8">
@@ -39,6 +40,11 @@
       #projects h2 {
         font-size: 36px;
         margin-bottom: 20px;
+      }
+      .slide-in {
+        opacity: 0;
+        transform: translateY(20vh);
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
       }
       .project {
         display: flex;
@@ -89,10 +95,11 @@
     <header>
       <h1>Quinn Hampson</h1>
       <h2>CS Student at Tufts University</h2>
+      <div> <img src="portfolioPhoto.jpg" alt="portfolioPhoto" style="float: right;"> </div>
     </header>
     
     <!-- About section -->
-    <section id="about">
+    <section id="about" class="slide-in">
       <div class="container">
         <h2>About Me</h2>
         <p>Hi, I'm Quinn Hampson, a sophomore CS student at Tufts University. 
@@ -102,7 +109,7 @@
     </section>
     
     <!-- Projects section -->
-    <section id="projects">
+    <section id="projects" class="slide-in">
       <div class="container">
         <h2>Projects</h2>
         <div class="project">
@@ -114,7 +121,7 @@
     </section>
     
     <!-- Contact section -->
-    <section id="contact">
+    <section id="contact" class="slide-in">
       <div class="container">
         <h2>Contact Me</h2>
         <p>Email: <a href="mailto:qhamp33@gmail.com">qhamp33@gmail.com</a></p>
@@ -124,5 +131,41 @@
     </section>
 
   </body>
+  <script>
+    const slideInElements = document.querySelectorAll('.slide-in');
+
+    function debounce(func, wait = 20, immediate = true) {
+      let timeout;
+      return function() {
+        const context = this, args = arguments;
+        const later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    }
+
+    function checkSlide() {
+      slideInElements.forEach(slideInElement => {
+        // Halfway through the element
+        const slideInAt = (window.scrollY + window.innerHeight) - slideInElement.clientHeight / 2;
+        // Bottom of the element
+        const elementBottom = slideInElement.offsetTop + slideInElement.clientHeight;
+        const isHalfShown = slideInAt > slideInElement.offsetTop;
+        const isNotScrolledPast = window.scrollY < elementBottom;
+        if (isHalfShown && isNotScrolledPast) {
+          slideInElement.classList.add('active');
+        } else {
+          slideInElement.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide));
+  </script>
+  
 </html>
-    
