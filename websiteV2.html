@@ -54,6 +54,10 @@
       .slide-in.stay {
         transition: opacity 0.4s ease-out, transform 0.4s ease-out;
       }
+      .slide-in.scroll-up {
+        opacity: 0;
+        transform: translateY(-20vh);
+      }
       .project {
         display: flex;
         flex-direction: column;
@@ -191,10 +195,13 @@
         const isNotScrolledPast = window.scrollY < elementBottom;
         if (isHalfShown && isNotScrolledPast) {
           slideInElement.classList.add('active', 'stay');
+          slideInElement.classList.remove('scroll-up');
         } else {
           slideInElement.classList.remove('active');
           if (!isNotScrolledPast) {
             slideInElement.classList.remove('stay');
+          } else {
+            slideInElement.classList.remove('scroll-up');
           }
         }
       });
