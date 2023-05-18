@@ -96,7 +96,9 @@
     <header>
       <h1>Quinn Hampson</h1>
       <h2>CS Student at Tufts University</h2>
-      <div> <img src="portfolioPhoto.jpg" alt="portfolioPhoto" style="float: right;" width="75" height="100"> </div>
+      <div style="position: absolute; top: 20px; right: 20px;"> 
+        <img src="portfolioPhoto.jpg" alt="portfolioPhoto" style="float: right;" width="75" height="100"> 
+      </div>
     </header>
     
     <!-- About section -->
@@ -167,6 +169,7 @@
     }
 
     window.addEventListener('scroll', debounce(checkSlide));
+    checkSlide();
   </script>
   
 </html>
