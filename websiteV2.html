@@ -52,7 +52,7 @@
         transform: translateY(0);
       }
       .slide-in.stay {
-        transition: none;
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
       }
       .project {
         display: flex;
@@ -82,34 +82,27 @@
         background-color: #333;
         color: #fff;
       }
-
       .contact-content {
         display: flex;
       }
-
       .contact-image {
         margin-right: 20px;
       }
-
       .contact-text {
         flex-grow: 1;
       }
-
       .contact-text h2 {
         font-size: 36px;
         margin-bottom: 20px;
       }
-
       .contact-text p {
         font-size: 18px;
         line-height: 1.5;
       }
-
       .contact-link {
-        color: #000; /* Change the link color to black */
+        color: hsl(0, 0%, 84%); /* Change the link color to black */
         text-decoration: none; /* Remove underline */
       }
-
       .contact-link:hover {
         color: #555; /* Change the link color on hover */
         text-decoration: underline; /* Add underline on hover */
@@ -200,6 +193,9 @@
           slideInElement.classList.add('active', 'stay');
         } else {
           slideInElement.classList.remove('active');
+          if (!isNotScrolledPast) {
+            slideInElement.classList.remove('stay');
+          }
         }
       });
     }
