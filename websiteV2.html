@@ -51,6 +51,9 @@
         opacity: 1;
         transform: translateY(0);
       }
+      .slide-in.stay {
+        transition: none;
+      }
       .project {
         display: flex;
         flex-direction: column;
@@ -102,6 +105,17 @@
         line-height: 1.5;
       }
 
+      .contact-link {
+        color: #000; /* Change the link color to black */
+        text-decoration: none; /* Remove underline */
+      }
+
+      .contact-link:hover {
+        color: #555; /* Change the link color on hover */
+        text-decoration: underline; /* Add underline on hover */
+      }
+
+
     </style>
   </head>
   <body>
@@ -127,27 +141,33 @@
         <h2>Projects</h2>
         <div class="project">
           <img src="https://via.placeholder.com/500x300" alt="Project image">
-          <h3>Project title</h3>
+          <h3>Project title 1</h3>
+          <p>Project description goes here.</p>
+        </div>
+        <div class="project">
+          <img src="https://via.placeholder.com/500x300" alt="Project image">
+          <h3>Project title 2</h3>
           <p>Project description goes here.</p>
         </div>
       </div>
     </section>
     
-    <!-- Contact section -->
-    <section id="contact" class="slide-in">
-      <div class="container">
-        <div class="contact-content">
-          <div class="contact-image">
-            <img src="portfolioPhoto.jpg" alt="portfolioPhoto" width="75" height="100">
-          </div>
-          <div class="contact-text">
-            <h2>Contact Me</h2>
-            <p>Email: <a href="mailto:qhamp33@gmail.com">qhamp33@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/quinn-h-hampson/">https://www.linkedin.com/in/quinn-h-hampson/</a></p>
-          </div>
+      <!-- Contact section -->
+  <section id="contact" class="slide-in">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-image">
+          <img src="portfolioPhoto.jpg" alt="portfolioPhoto" width="150" height="200">
+        </div>
+        <div class="contact-text">
+          <h2>Contact Me</h2>
+          <p>Email: <a href="mailto:qhamp33@gmail.com" class="contact-link">qhamp33@gmail.com</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/quinn-h-hampson/" class="contact-link">https://www.linkedin.com/in/quinn-h-hampson/</a></p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+
 
   </body>
   <script>
@@ -177,7 +197,7 @@
         const isHalfShown = slideInAt > slideInElement.offsetTop;
         const isNotScrolledPast = window.scrollY < elementBottom;
         if (isHalfShown && isNotScrolledPast) {
-          slideInElement.classList.add('active');
+          slideInElement.classList.add('active', 'stay');
         } else {
           slideInElement.classList.remove('active');
         }
