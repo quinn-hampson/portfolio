@@ -14,8 +14,8 @@
       
       /* Header styles */
       header {
-        background-color: #333;
-        color: #fff;
+        background-color: #3e3eac;
+        color: #FFF;
         padding: 20px;
         height: 100px; 
       }
@@ -23,7 +23,8 @@
       /* About section styles */
       #about {
         padding: 50px;
-        background-color: #f2f2f2;
+        background-color: #2d2f84;
+        color: #FFF;
       }
       #about h2 {
         font-size: 36px;
@@ -37,6 +38,8 @@
       /* Projects section styles */
       #projects {
         padding: 50px;
+        background-color: #553D67;
+        color: #FFF; 
       }
       #projects h2 {
         font-size: 36px;
@@ -53,10 +56,6 @@
       }
       .slide-in.stay {
         transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-      }
-      .slide-in.scroll-up {
-        opacity: 0;
-        transform: translateY(-20vh);
       }
       .project {
         display: flex;
@@ -79,12 +78,10 @@
         text-align: center;
       }
       
-      /* Contact section styles */
-
       #contact {
         padding: 50px;
-        background-color: #333;
-        color: #fff;
+        background-color: #3c2a4a;
+        color: #FFF;
       }
       .contact-content {
         display: flex;
@@ -111,6 +108,14 @@
         color: #555; /* Change the link color on hover */
         text-decoration: underline; /* Add underline on hover */
       }
+      .about-link {
+        color: hsl(217, 65%, 63%); /* Change the link color to black */
+        text-decoration: none; /* Remove underline */
+      }
+      .about-link:hover {
+        color: #b681ef; /* Change the link color on hover */
+        text-decoration: underline; /* Add underline on hover */
+      }
 
 
     </style>
@@ -129,6 +134,8 @@
         <p>Hi, I'm Quinn Hampson, a sophomore CS student at Tufts University. 
             I specialize in C++, HTML, and JavaScript. When I'm not coding, 
             you can find me backpacking, running, or playing guitar.</p>
+        <p>I currently run Cross Country for Tufts as well as Track & Field, where I compete in the 1500m, 3k, and the occasional 5k.</p>
+        <p>Download my <a href="file:///C:/Users/14139/Downloads/ResumeSummer23.pdf" class="about-link">resume</a>.</p>
       </div>
     </section>
     
@@ -193,17 +200,14 @@
         const elementBottom = slideInElement.offsetTop + slideInElement.clientHeight;
         const isHalfShown = slideInAt > slideInElement.offsetTop;
         const isNotScrolledPast = window.scrollY < elementBottom;
+        const isFirstTime = !slideInElement.classList.contains('active');
         if (isHalfShown && isNotScrolledPast) {
           slideInElement.classList.add('active', 'stay');
-          slideInElement.classList.remove('scroll-up');
-        } else {
-          slideInElement.classList.remove('active');
-          if (!isNotScrolledPast) {
-            slideInElement.classList.remove('stay');
-          } else {
-            slideInElement.classList.remove('scroll-up');
-          }
         }
+        // } else {
+        //   slideInElement.classList.remove('active');
+        //   slideInElement.classList.remove('stay');
+        // }
       });
     }
 
