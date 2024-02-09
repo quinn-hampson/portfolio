@@ -10,14 +10,25 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        background-color: #000;
       }
       
       /* Header styles */
-      header {
+      #header {
         background-color: #3e3eac;
         color: #FFF;
         padding: 20px;
-        height: 100px; 
+        height: 300px; 
+      }
+      #header h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-top: 100px;
+      }
+      #header h2 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 100px;
       }
       
       /* About section styles */
@@ -29,6 +40,7 @@
       #about h2 {
         font-size: 36px;
         margin-bottom: 20px;
+        margin-right: 20px;
       }
       #about p {
         font-size: 18px;
@@ -83,11 +95,11 @@
         background-color: #3c2a4a;
         color: #FFF;
       }
-      .contact-content {
+      .about-content {
         display: flex;
       }
-      .contact-image {
-        margin-right: 20px;
+      .my-image {
+        margin-left: 20px;
       }
       .contact-text {
         flex-grow: 1;
@@ -122,20 +134,25 @@
   </head>
   <body>
     <!-- Header -->
-    <header>
+    <section id="header">
       <h1>Quinn Hampson</h1>
       <h2>CS Student at Tufts University</h2>
-    </header>
+    </section>
     
     <!-- About section -->
     <section id="about" class="slide-in">
       <div class="container">
-        <h2>About Me</h2>
-        <p>Hi, I'm Quinn Hampson, a sophomore CS student at Tufts University. 
-            I specialize in C++, HTML, and JavaScript. When I'm not coding, 
-            you can find me backpacking, running, or playing guitar.</p>
-        <p>I currently run Cross Country for Tufts as well as Track & Field, where I compete in the 1500m, 3k, and the occasional 5k.</p>
-        <p>Download my <a href="file:///C:/Users/14139/Downloads/ResumeSummer23.pdf" class="about-link">resume</a>.</p>
+        <div class="about-content">
+          <h2 style="white-space: nowrap;">About Me</h2>
+          <p style="line-height: 1.5;">Hi, I'm Quinn Hampson, a sophomore CS student at Tufts University. 
+              I specialize in C++, HTML, and JavaScript. When I'm not coding, 
+              you can find me backpacking, running, or playing guitar. <br>
+              I currently run Cross Country for Tufts as well as Track & Field, where I compete in the 1500m, 3k, and the occasional 5k.<br>
+              Download my <a href="file:///C:/Users/14139/Downloads/ResumeSummer23.pdf" class="about-link">resume</a>.</p>
+          <div class="my-image">
+            <img src="portfolioPhoto.jpg" alt="portfolioPhoto" width="150" height="200">
+          </div>
+        </div>
       </div>
     </section>
     
@@ -159,15 +176,10 @@
       <!-- Contact section -->
   <section id="contact" class="slide-in">
     <div class="container">
-      <div class="contact-content">
-        <div class="contact-image">
-          <img src="portfolioPhoto.jpg" alt="portfolioPhoto" width="150" height="200">
-        </div>
-        <div class="contact-text">
-          <h2>Contact Me</h2>
-          <p>Email: <a href="mailto:qhamp33@gmail.com" class="contact-link">qhamp33@gmail.com</a></p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/quinn-h-hampson/" class="contact-link">https://www.linkedin.com/in/quinn-h-hampson/</a></p>
-        </div>
+      <div class="contact-text">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:qhamp33@gmail.com" class="contact-link">qhamp33@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/quinn-h-hampson/" class="contact-link">https://www.linkedin.com/in/quinn-h-hampson/</a></p>
       </div>
     </div>
   </section>
@@ -195,7 +207,7 @@
     function checkSlide() {
       slideInElements.forEach(slideInElement => {
         // Halfway through the element
-        const slideInAt = (window.scrollY + window.innerHeight) - slideInElement.clientHeight / 2;
+        const slideInAt = window.scrollY + window.innerHeight - 100;
         // Bottom of the element
         const elementBottom = slideInElement.offsetTop + slideInElement.clientHeight;
         const isHalfShown = slideInAt > slideInElement.offsetTop;
@@ -204,10 +216,6 @@
         if (isHalfShown && isNotScrolledPast) {
           slideInElement.classList.add('active', 'stay');
         }
-        // } else {
-        //   slideInElement.classList.remove('active');
-        //   slideInElement.classList.remove('stay');
-        // }
       });
     }
 
